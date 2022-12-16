@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE "FoodoDB"."User" (
+  id VARCHAR(255) PRIMARY KEY NOT NULL,
+  name VARCHAR(255),
+  email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE "FoodoDB"."Todo" (
+  id VARCHAR(255) PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  complete BOOLEAN NOT NULL DEFAULT false,
+  "owner" VARCHAR(255) NOT NULL,
+  FOREIGN KEY ("owner") REFERENCES "FoodoDB"."User"(id)
+);

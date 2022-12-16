@@ -1,0 +1,53 @@
+{
+  "name": "foodo-api",
+  "version": "0.1.0",
+  "bin": {
+    "foodo": "bin/foodo.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "prediff": "yarn build",
+    "diff": "yarn cdk diff",
+    "predeploy": "yarn build",
+    "deploy": "yarn cdk deploy -O ./cdk-exports.json"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.115.0",
+    "@types/jest": "^26.0.10",
+    "@types/node": "16.4.3",
+    "aws-cdk": "1.115.0",
+    "husky": ">=4",
+    "jest": "^26.4.2",
+    "lint-staged": ">=10",
+    "prettier": "^2.3.2",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^10.1.0",
+    "typescript": "~4.3.5"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-appsync": "1.115.0",
+    "@aws-cdk/aws-ec2": "1.115.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.115.0",
+    "@aws-cdk/aws-rds": "1.115.0",
+    "@aws-cdk/aws-amplify": "1.115.0",
+    "@aws-cdk/aws-cognito": "1.115.0",
+    "@aws-cdk/core": "1.115.0",
+    "source-map-support": "0.5.16"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": "prettier --write"
+  }
+}

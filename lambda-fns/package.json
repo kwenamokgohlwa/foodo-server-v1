@@ -1,0 +1,21 @@
+{
+  "name": "lambda-handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:save": "yarn prisma migrate dev --create-only --preview-feature",
+    "db:migrate": "yarn prisma migrate dev --preview-feature"
+  },
+  "keywords": [],
+  "author": "Kwena Mokgohlwa",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "3.13.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.826.0",
+    "esbuild": "0",
+    "prisma": "3.13.0"
+  }
+}

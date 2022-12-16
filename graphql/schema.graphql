@@ -1,0 +1,43 @@
+type User @aws_cognito_user_pools {
+  id: String!
+  email: String
+  name: String
+}
+
+type Todo @aws_cognito_user_pools {
+  id: String!
+  owner: String
+  title: String
+  complete: Boolean
+}
+
+input CreateTodoInput {
+  id: String
+  owner: String
+  title: String
+  complete: Boolean
+}
+
+input UpdateTodoInput {
+  id: String
+  title: String
+  complete: Boolean
+  owner: String
+}
+
+type Query {
+  listTodos: [Todo] @aws_cognito_user_pools
+  getTodoById(todoId: String!): Todo @aws_cognito_user_pools
+}
+
+type Mutation {
+  createTodo(todo: CreateTodoInput!): Todo @aws_cognito_user_pools
+  deleteTodo(todoId: String!): Todo @aws_cognito_user_pools
+  updateTodo(todo: UpdateTodoInput!): Todo @aws_cognito_user_pools
+}
+
+type Subscription {
+  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
+  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
+  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+}
